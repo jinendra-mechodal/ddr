@@ -1,0 +1,76 @@
+name: ddr
+description: "A new Flutter project."
+
+
+publish_to: 'none' 
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.3
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  
+  cupertino_icons: ^1.0.8
+  http: ^1.2.2
+  provider: ^6.1.2
+  shared_preferences: ^2.3.2
+  fluttertoast: ^8.2.8
+  flutter_riverpod: ^2.5.1
+  flutter_screenutil: ^5.9.3
+  flutter_svg: ^2.0.10+1
+  slide_to_act:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  
+  flutter_lints: ^4.0.0
+
+
+flutter:
+
+  uses-material-design: true
+
+
+  assets:
+    - assets/
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+
+
+# RacingSansOne-Regular.ttf // Weight 400
+# Inter-Regular.ttf         // Weight 400
+# Inter-SemiBold.ttf        // Weight 600
+# Inter-Bold.ttf            // Weight 700
+
+  fonts:
+    - family: RacingSansOne
+      fonts:
+        - asset: assets/fonts/RacingSansOne-Regular/RacingSansOne-Regular.ttf
+          weight: 400
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-SemiBold/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold/Inter-Bold.ttf
+          weight: 700
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Light/Roboto-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Roboto-Regular/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Roboto-Medium/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Roboto-SemiBold/Roboto-Bold.ttf
+          weight: 600
