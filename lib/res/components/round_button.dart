@@ -46,3 +46,49 @@ class RoundedCornerCustomButton extends StatelessWidget {
     );
   }
 }
+
+class RoundedCornerCustomButton2 extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+  final List<Color> gradientColors;
+  final double height;
+
+  RoundedCornerCustomButton2({
+    required this.text,
+    required this.onPressed,
+    required this.gradientColors,
+    this.height = 50.0,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: gradientColors,
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
+        borderRadius: BorderRadius.circular(30.0), // Rounded corners
+      ),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.transparent, // No background color as gradient is applied
+          shadowColor: Colors.transparent, // Remove button shadow
+          padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 30.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30.0), // Same radius as Container
+          ),
+        ),
+        child:Text(
+          text,
+          style: interFont600.copyWith(
+            color: Colors.white,
+            fontSize: 18.sp,
+          ),
+        ),
+      ),
+    );
+  }
+}

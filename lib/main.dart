@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'features/SplashScreen/view/splash_page.dart';
 import 'res/routes/routes.dart';
-import 'res/routes/routes_name.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -27,6 +26,7 @@ class MyApp extends StatelessWidget {
             '/': (context) => SplashScreen(),
             ...Routes.getRoutes(),
           },
+          //home: HomePage(),
         );
       },
     );

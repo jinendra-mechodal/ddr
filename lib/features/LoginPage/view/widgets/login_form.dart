@@ -23,13 +23,13 @@ class LoginForm extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 20.h),
+          SizedBox(height: 63.h),
           Image.asset(
             'assets/images/login-logo.png',
             width: 250.w,
-            height: 166.73.h,
+            height: 166.h,
           ),
-          SizedBox(height: 20.h),
+          //SizedBox(height: 12.h),
           Text(
             'Daily Duty Roster',
             style: racingSansOneFont400.copyWith(fontSize: 35.sp, color: AppColor.color1),
@@ -57,7 +57,7 @@ class LoginForm extends StatelessWidget {
             controller: phoneController,
             decoration: InputDecoration(
               labelStyle: const TextStyle(color: AppColor.color2),
-              hintText: 'phone number',
+              hintText: 'Phone number',
               hintStyle: interFont600.copyWith(color: AppColor.color4.withOpacity(0.6)),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(32),
@@ -121,7 +121,8 @@ class LoginForm extends StatelessWidget {
 
           InkWell(
             onTap: () {
-              Navigator.pushNamed(context, RoutesNames.requestUnderReview);
+              Navigator.pushNamed(context, RoutesNames.createAccount);
+              //Navigator.pushNamed(context, RoutesNames.requestUnderReview);
             },
             child: Column(
               children: [
