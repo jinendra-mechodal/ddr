@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../res/colors/app_color.dart';
+import '../../../../res/components/round_button.dart';
 import '../../../../res/fonts/app_fonts.dart';
+import '../../../../res/routes/routes_name.dart';
 
 class MyProfileEditPage extends StatefulWidget {
   @override
@@ -52,6 +54,15 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
           children: [
             _buildProfileSection(context),
             _buildProfileForm(),
+
+            SizedBox(height: 40.h,),
+            RoundedCornerCustomButton(
+              text: 'Submit',
+              onPressed: (){
+                //Navigator.pushNamed(context, RoutesNames.requestUnderReview);
+                Navigator.pop(context);                 },
+            ),
+            SizedBox(height: 20.h),
           ],
         ),
       ),
@@ -69,6 +80,7 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
         children: [
           Center(
             child: Stack(
+              alignment: Alignment.center, // Center the icon within the Stack
               children: [
                 SizedBox(
                   width: 100.w,
@@ -92,12 +104,25 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
                           errorBuilder: (context, error, stackTrace) {
                             return Container(
                               color: Colors.grey[300],
-                              child: Center(child: Icon(Icons.error)),
+                              child: Center(
+                                child: Icon(
+                                  Icons.error,
+                                  color: Colors.red,
+                                  size: 30,
+                                ),
+                              ),
                             );
                           },
                         ),
                       ),
                     ),
+                  ),
+                ),
+                Positioned(
+                  bottom: 39, // Adjust this value to position the icon vertically
+                  child: SvgPicture.asset(
+                    'assets/icons/chnage-icon.svg',
+                    color: Colors.white,
                   ),
                 ),
               ],
@@ -108,6 +133,57 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
       ),
     );
   }
+
+  // Widget _buildProfileSection(BuildContext context) {
+  //   return Padding(
+  //     padding: EdgeInsets.symmetric(
+  //       vertical: 28.h,
+  //       horizontal: 100.w,
+  //     ),
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         Center(
+  //           child: Stack(
+  //             children: [
+  //               SizedBox(
+  //                 width: 100.w,
+  //                 height: 100.w,
+  //                 child: Container(
+  //                   child: Padding(
+  //                     padding: const EdgeInsets.all(2),
+  //                     child: ClipRRect(
+  //                       borderRadius: BorderRadius.circular(60.w),
+  //                       child: Image.network(
+  //                         'https://s3-alpha-sig.figma.com/img/98fd/774b/fc3d4fdeff74181e1e0818381ccc9c7c?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Z1yMYGSseuNqvf5fEIDHZhRyQgQ6qHN2yStBPL2jlaIqPKQV6aud9r7zfJlFPQnG~-akrxGaWaHUegzSrhrnjw2vqMiq3m6aF2Oteez1vNMu0BNOSV6lSyo7m6QtzkLELx2HQun~yNercHrD2jNeqc4w-PzyoSecL9fM0g-Q8cgrHzG2nJuU~KHBYAftdE9ExQCFVEGWKGn9p~1KjkWrZS1ILsteDczT87LO1BXo2SqBpRHGXTW~TW0dVBololRj1aWK80P9xDGmNRXmeWKa2j9oLg4EXNcYhx0Vh433w5zqz~TX0VFTK3~BsOW1gw7pRH-RxJUsVtdAwSSK5gQKiQ__',
+  //                         fit: BoxFit.cover,
+  //                         loadingBuilder: (context, child, loadingProgress) {
+  //                           if (loadingProgress == null) return child;
+  //                           return Center(
+  //                             child: CircularProgressIndicator(
+  //                               color: AppColor.PrimaryColor,
+  //                             ),
+  //                           );
+  //                         },
+  //                         errorBuilder: (context, error, stackTrace) {
+  //                           return Container(
+  //                             color: Colors.grey[300],
+  //                             child: Center(child: Icon(Icons.error)),
+  //                           );
+  //                         },
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 ),
+  //               ),
+  //             ],
+  //           ),
+  //         ),
+  //         SizedBox(height: 20.h),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   Widget _buildProfileForm() {
     return Column(
@@ -131,12 +207,12 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
       child: TextField(
         style: interFont600.copyWith(
           fontSize: 16.sp,
-          color: AppColor.color4,
+          color: AppColor.blackColor,
         ),
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(30.0),
             borderSide: BorderSide(
               color: AppColor.color4,
             ),
@@ -189,16 +265,22 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
           ),
         ),
         // Display phone number count
-        Align(
-          alignment: Alignment.centerRight,
-          child: Text(
-            '${phoneNumber.length}/10',
-            style: interFont600.copyWith(
-              fontSize: 16.sp,
-              color: AppColor.color4,
+        Padding(
+          padding:  EdgeInsets.only(
+            right: 10,
+          ),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              '${phoneNumber.length}/10',
+              style: interFont600.copyWith(
+                fontSize: 16.sp,
+                color: AppColor.color4,
+              ),
             ),
           ),
         ),
+
       ],
     );
   }
@@ -210,7 +292,7 @@ class _MyProfileEditPageState extends State<MyProfileEditPage> {
         decoration: InputDecoration(
           contentPadding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(30.0),
             borderSide: BorderSide(
               color: AppColor.color6,
             ),

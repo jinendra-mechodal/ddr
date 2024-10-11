@@ -28,7 +28,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(height: 30.h),
+          SizedBox(height: 40.h),
+        //  SizedBox(height: 30.h),
           Text(
             'User Registration',
             style: interFont700.copyWith(
@@ -91,13 +92,13 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
       child: TextField(
         style: interFont600.copyWith(
           fontSize: 16.sp,
-          color: AppColor.color4,
+          color: AppColor.blackColor,
         ),
         decoration: InputDecoration(
           contentPadding:
               EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(30.0),
             borderSide: BorderSide(color: AppColor.color4),
           ),
           hintText: label,
@@ -135,8 +136,8 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.0),
-                borderSide: BorderSide(color: AppColor.color4),
+                borderRadius: BorderRadius.circular(30.0),
+                borderSide: BorderSide(color: AppColor.blackColor),
               ),
               hintText: label,
               hintStyle: interFont600.copyWith(
@@ -146,17 +147,24 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: Text(
-            '${phoneNumber.length}/10',
-            style: interFont600.copyWith(
-              fontSize: 16.sp,
-              color: AppColor.color4,
+        Padding(
+          padding:  EdgeInsets.only(
+            right: 10,
+          ),
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              '${phoneNumber.length}/10',
+              style: interFont600.copyWith(
+                fontSize: 16.sp,
+                color: AppColor.color4,
+              ),
             ),
           ),
         ),
+        SizedBox(height: 10,),
         if (!isOtpSent) _buildGenerateOtpButton(),
+        SizedBox(height: 10,),
         if (isOtpSent) _buildOtpField(),
       ],
     );
@@ -170,7 +178,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
           contentPadding:
               EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(30.0),
             borderSide: BorderSide(color: AppColor.color6),
           ),
         ),
@@ -195,49 +203,54 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
   }
 
   Widget _buildGenerateOtpButton() {
-    return Container(
-      height: 53, // Keep this height, but consider using MediaQuery
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: gradientColors,
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-        borderRadius: BorderRadius.circular(32.0), // Rounded corners
-      ),
-      child: ElevatedButton(
-        onPressed: () {
-          if (phoneNumber.length == 10) {
-            setState(() {
-              isOtpSent = true;
-            });
-            print("OTP sent to $phoneNumber");
-          } else {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Please enter a valid phone number.')),
-            );
-          }
-        },
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          // No background color as gradient is applied
-          shadowColor: Colors.transparent,
-          // Remove button shadow
-          padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 30.0),
-          // Adjusted padding
-          shape: RoundedRectangleBorder(
-            borderRadius:
-                BorderRadius.circular(32.0), // Same radius as Container
+    return Column(
+      children: [
+        Container(
+          height: 53, // Keep this height, but consider using MediaQuery
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: gradientColors,
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
+            borderRadius: BorderRadius.circular(32.0), // Rounded corners
+          ),
+          child: ElevatedButton(
+            onPressed: () {
+              if (phoneNumber.length == 10) {
+                setState(() {
+                  isOtpSent = true;
+                });
+                print("OTP sent to $phoneNumber");
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Please enter a valid phone number.')),
+                );
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.transparent,
+              // No background color as gradient is applied
+              shadowColor: Colors.transparent,
+              // Remove button shadow
+              padding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 30.0),
+              // Adjusted padding
+              shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.circular(32.0), // Same radius as Container
+              ),
+            ),
+            child: Text(
+              'Generate OTP',
+              style: interFont600.copyWith(
+                color: Colors.white,
+                fontSize: 18.sp,
+              ),
+            ),
           ),
         ),
-        child: Text(
-          'Generate OTP',
-          style: interFont600.copyWith(
-            color: Colors.white,
-            fontSize: 18.sp,
-          ),
-        ),
-      ),
+        SizedBox(height: 10,),
+      ],
     );
   }
 
@@ -265,7 +278,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 12.h, horizontal: 16.w),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+                  borderRadius: BorderRadius.circular(30.0),
                   borderSide: BorderSide(color: AppColor.color4),
                 ),
                 hintText: 'Enter OTP',
