@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'features/CreateNewAccount/view/page/create_account_page.dart';
+import 'features/MyDutyPage/view/page/my_duty_page.dart';
 import 'features/SplashScreen/view/splash_page.dart';
 import 'res/routes/routes.dart';
 
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
             '/': (context) => SplashScreen(),
             ...Routes.getRoutes(),
           },
-          //home: HomePage(),
+          //home: MyDutyPage(),
         );
       },
     );

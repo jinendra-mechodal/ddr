@@ -25,6 +25,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.0.10+1
   slide_to_act:
+  dropdown_button2: ^2.3.9
+  table_calendar: ^3.0.0
 
 dev_dependencies:
   flutter_test:

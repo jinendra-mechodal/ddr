@@ -1,3 +1,4 @@
+import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -97,38 +98,100 @@ class _LeaveRequestPageState extends State<LeaveRequestPage> {
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 children: [
+                  // Container(
+                  //   decoration: BoxDecoration(
+                  //     color: Color(0xFFF6F6F6), // Background color
+                  //     borderRadius: BorderRadius.circular(6.r), // Match the border radius
+                  //   ),
+                  //   child: DropdownButtonFormField<String>(
+                  //     value: selectedLeaveType,
+                  //     hint: Text(
+                  //       'Select Leave Type',
+                  //       style: robotoSemiBold600.copyWith(fontSize: 16.sp, color: AppColor.color7),
+                  //     ),
+                  //     decoration: InputDecoration(
+                  //       border: OutlineInputBorder(
+                  //         borderRadius: BorderRadius.circular(6.r),
+                  //         borderSide: BorderSide(color: AppColor.color4),
+                  //       ),
+                  //       filled: true, // Ensures the background color is shown
+                  //       fillColor: Colors.transparent, // Keep transparent for inner dropdown
+                  //     ),
+                  //     items: leaveTypes.map((String leave) {
+                  //       return DropdownMenuItem<String>(
+                  //         value: leave,
+                  //         child: Text(leave),
+                  //       );
+                  //     }).toList(),
+                  //     onChanged: (String? newValue) {
+                  //       setState(() {
+                  //         selectedLeaveType = newValue;
+                  //       });
+                  //     },
+                  //   ),
+                  // ),
                   Container(
                     decoration: BoxDecoration(
                       color: Color(0xFFF6F6F6), // Background color
                       borderRadius: BorderRadius.circular(6.r), // Match the border radius
                     ),
-                    child: DropdownButtonFormField<String>(
-                      value: selectedLeaveType,
-                      hint: Text(
-                        'Select Leave Type',
-                        style: robotoSemiBold600.copyWith(fontSize: 16.sp, color: AppColor.color7),
-                      ),
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(6.r),
-                          borderSide: BorderSide(color: AppColor.color4),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton2(
+                        isExpanded: true,
+                        hint: Text(
+                          'Select Leave Type',
+                          style: robotoSemiBold600.copyWith(fontSize: 16.sp, color: AppColor.color7),
                         ),
-                        filled: true, // Ensures the background color is shown
-                        fillColor: Colors.transparent, // Keep transparent for inner dropdown
+                        items: leaveTypes.map((String leave) {
+                          return DropdownMenuItem<String>(
+                            value: leave,
+                            child: Text(leave),
+                          );
+                        }).toList(),
+                        value: selectedLeaveType,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            selectedLeaveType = newValue;
+                          });
+                        },
+                        buttonStyleData: ButtonStyleData(
+                          height: 57.h,
+                          padding: EdgeInsets.only(left: 0, right: 16),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(6)), // Match the original radius
+                            border: Border(
+                              top: BorderSide(color: AppColor.color4),
+                              bottom: BorderSide(color: AppColor.color4),
+                              left: BorderSide(color: AppColor.color4),
+                              right: BorderSide(color: AppColor.color4),
+                            ),
+                          ),
+                        ),
+                        iconStyleData: const IconStyleData(
+                          icon: Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        dropdownStyleData: DropdownStyleData(
+                          maxHeight: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14),
+                          ),
+                          offset: const Offset(0, 0),
+                          scrollbarTheme: ScrollbarThemeData(
+                            thickness: MaterialStateProperty.all(6),
+                            thumbVisibility: MaterialStateProperty.all(true),
+                          ),
+                        ),
+                        menuItemStyleData: const MenuItemStyleData(
+                          height: 57,
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                        ),
                       ),
-                      items: leaveTypes.map((String leave) {
-                        return DropdownMenuItem<String>(
-                          value: leave,
-                          child: Text(leave),
-                        );
-                      }).toList(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          selectedLeaveType = newValue;
-                        });
-                      },
                     ),
                   ),
+
 
                   SizedBox(height: 20.h),
                   Row(

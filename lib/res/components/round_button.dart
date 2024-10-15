@@ -39,7 +39,7 @@ class RoundedCornerCustomButton extends StatelessWidget {
           text,
           style: interFont600.copyWith(
             color: Colors.white,
-            fontSize: 18.sp,
+            fontSize: 16.5.sp,
           ),
         ),
       ),
@@ -85,7 +85,7 @@ class RoundedCornerCustomButton2 extends StatelessWidget {
           text,
           style: interFont600.copyWith(
             color: Colors.white,
-            fontSize: 18.sp,
+            fontSize: 16.5.sp,
           ),
         ),
       ),
